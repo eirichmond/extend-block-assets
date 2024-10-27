@@ -1,0 +1,30 @@
+{
+    "name": "elliottrichmond/extend-block-assets",
+    "description": "Extends core block styles",
+    "type": "package",
+    "keywords": [
+        "WordPress",
+        "Themes"
+    ],
+    "homepage": "https://elliottrichmond.co.uk",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Elliott Richmond",
+            "email": "elliott@squareonemd.co.uk"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.10",
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "scripts": {
+        "format": "phpcbf --standard=phpcs.xml.dist --report-summary --report-source",
+        "lint": "phpcs --standard=phpcs.xml.dist"
+    }
+}

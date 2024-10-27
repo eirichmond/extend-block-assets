@@ -1,0 +1,35 @@
+{
+	"name": "extendcoreblockstyles",
+	"private": true,
+	"version": "0.0.1",
+	"description": "Extends core block styles",
+	"author": "Elliott Richmond",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"theme"
+	],
+	"homepage": "https://elliottrichmond.co.uk",
+	"repository": {
+		"type": "git",
+		"url": "todo"
+	},
+	"engines": {
+		"node": ">=20.10.0",
+		"npm": ">=10.2.3"
+	},
+	"devDependencies": {
+		"@wordpress/stylelint-config": "^22.5.0",
+		"grunt": "^1.6.1",
+		"grunt-wp-i18n": "^1.0.3",
+		"grunt-wp-readme-to-markdown": "^2.1.0",
+		"stylelint": "^14.16.1"
+	},
+	"scripts": {
+		"readme": "grunt readme",
+		"lint:css": "stylelint **/*.css -i .gitignore",
+		"lint:css:fix": "stylelint **/*.css -i .gitignore --fix",
+		"lint:php": "composer run-script lint",
+		"lint:php:fix": "composer run-script format"
+	}
+}
