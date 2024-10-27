@@ -6,7 +6,7 @@ class ExtendBlockAssets {
 
     /**
      * Constructor function
-     * Initializes the block assets (styles and scripts) to be enqueued.
+     * Initializes the block assets (styles) to be enqueued.
      */
     public function __construct($block_assets = []) {
         $this->block_assets = $block_assets;
@@ -22,9 +22,6 @@ class ExtendBlockAssets {
         foreach ($this->block_assets as $block_name) {
             // Register block style with automatically generated handle and path
             $this->register_and_enqueue_block_style($block_name);
-
-            // Register block script with automatically generated handle and path
-            $this->register_script($block_name);
         }
     }
 
@@ -49,24 +46,6 @@ class ExtendBlockAssets {
                 [
                     'handle' => $style_handle,
                 ]
-            );
-        }
-    }
-
-    /**
-     * Register scripts for a block with a dynamically generated handle
-     */
-    private function register_script($block_name) {
-        $script_handle = 'extend-' . str_replace('/', '-', $block_name) . '-script';
-        $script_src = $this->get_asset_path($block_name, 'js');
-
-        if ($script_src) {
-            wp_register_script(
-                $script_handle,
-                $script_src,
-                ['jquery'],
-                null,
-                true
             );
         }
     }
