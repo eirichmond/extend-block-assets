@@ -18,7 +18,7 @@ Register and Enqueue styles for core blocks when they are rendered to the page
 ## Installation ##
 
 1. Drop this folder into your theme folder
-2. Require the class in your theme's function.php file with the following - require_once get_template_directory() . '/extend-block-assets/class-extent-block-assets.php';
+2. Require the class in your theme's function.php file with the following - `require_once get_template_directory() . '/extend-block-assets/class-extent-block-assets.php';`
 3. See example-functions.php for usage in your project
 4. When you add a core block style to your array be sure to add a style sheet with the correct core style sheet under /assets/css with the naming convention 'extend-core-*blockname*.css'
 
