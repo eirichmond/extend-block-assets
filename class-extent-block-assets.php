@@ -1,5 +1,24 @@
 <?php
-class ExtendBlockAssets {
+/**
+ * This is a simple helper class to simplify enqueuing
+ * core styles for modern WordPress Block Themes
+ * 
+ * To use simply instantiate the class and feed in an array
+ * of core block name references like:
+ * 
+ * $block_assets = array(
+ *     'paragraph',
+ *     'heading',
+ *     'quote'
+ * )
+ * 
+ * new Extend_Block_Assets($block_assets);
+ * 
+ * @var array $block_assets
+ * 
+ */
+
+class Extend_Block_Assets {
 
     // Array to hold the block names for which to enqueue assets
     private $block_assets = array();
@@ -11,8 +30,7 @@ class ExtendBlockAssets {
     public function __construct( $block_assets = array() ) {
         $this->block_assets = $block_assets;
 
-        // Hook into WordPress to register block styles and scripts
-        add_action( 'init', array( $this, 'register_block_assets') );
+        $this->register_block_assets();
     }
 
     /**
@@ -29,7 +47,9 @@ class ExtendBlockAssets {
      * Register and associate styles with a block using a dynamic handle
      */
     private function register_and_enqueue_block_style($block_name) {
+
         $style_handle = 'extend-' . str_replace('/', '-', $block_name) . '-style';
+
         $style_src = $this->get_asset_path($block_name, 'css');
 
         if ($style_src) {
@@ -51,17 +71,11 @@ class ExtendBlockAssets {
      * Helper function to generate asset path based on block name and file extension
      */
     private function get_asset_path($block_name, $type) {
-        $filename = 'extend-' . str_replace('/', '-', $block_name) . '.' . $type;
+        $filename = 'extend-' . $block_name . '.' . $type;
         $file_path = get_template_directory_uri() . '/extend-block-assets/assets/' . $type . '/' . $filename;
 
         // Check if file exists in the theme directory
         return file_exists(get_template_directory() . '/extend-block-assets/assets/' . $type . '/' . $filename) ? $file_path : false;
     }
 
-    /**
-     * Add block assets dynamically after instantiation
-     */
-    public function add_block_assets($block_name) {
-        $this->block_assets[] = $block_name;
-    }
 }
