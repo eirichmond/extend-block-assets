@@ -20,28 +20,53 @@
 
 class Extend_Block_Assets {
 
-    // Array to hold the block names for which to enqueue assets
+    /**
+     * string value for the styles directory
+     *
+     * @var string
+     */
+    private $css_directory;
+
+    /**
+     * string value for the javascript directory
+     *
+     * @var string
+     */
+    private $js_directory;
+
+    /**
+     * Array to hold the block names for which to enqueue assets
+     *
+     * @var array
+     */
     private $block_assets = array();
 
     /**
-     * Constructor function
-     * Initializes the block assets (styles) to be enqueued.
+     * Initializes the class with two string parameters
+     * one for the themes CSS path and one for the themes JS path
+     *
+     * @param string $style_path
+     * @param string $javascript_path
      */
-    public function __construct() {
+    public function __construct( $style_path = null, $javascript_path = null ) {
+
+        $this->css_directory = $style_path;
+        $this->js_directory = $javascript_path;
+
         $this->block_assets = $this->get_theme_file_names();
 
         $this->register_block_assets();
     }
 
     /**
-     * A better way to get styles
+     * A better way to get file names to include in registration and enqueue
      *
      * @return array $file_names
      */
     public function get_theme_file_names() {
         // Set the default directory to the current theme's path if none is provided
-        if (empty($directory)) {
-            $directory = get_template_directory() . '/assets/css/blocks';
+        if (empty($this->css_directory)) {
+            $directory = get_template_directory() . $this->css_directory;
         }
 
         $file_names = [];
