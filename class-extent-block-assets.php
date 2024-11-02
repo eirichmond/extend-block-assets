@@ -27,10 +27,43 @@ class Extend_Block_Assets {
      * Constructor function
      * Initializes the block assets (styles) to be enqueued.
      */
-    public function __construct( $block_assets = array() ) {
-        $this->block_assets = $block_assets;
+    public function __construct() {
+        $this->block_assets = $this->get_theme_file_names();
 
         $this->register_block_assets();
+    }
+
+    /**
+     * A better way to get styles
+     *
+     * @return array $file_names
+     */
+    public function get_theme_file_names() {
+        // Set the default directory to the current theme's path if none is provided
+        if (empty($directory)) {
+            $directory = get_template_directory() . '/assets/css/blocks';
+        }
+
+        $file_names = [];
+
+        // Scan the directory and iterate through its contents
+        foreach (scandir($directory) as $file) {
+            if ($file === '.' || $file === '..') {
+                continue; // Skip current and parent directory pointers
+            }
+
+            $filePath = $directory . DIRECTORY_SEPARATOR . $file;
+
+            if (is_dir($filePath) && $recursive) {
+                // If it’s a directory and recursive is true, call the function recursively
+                $file_names = array_merge($file_names, get_theme_file_names($filePath, true));
+            } elseif (is_file($filePath)) {
+                // If it’s a file, get the filename without the extension
+                $file_names[] = pathinfo($file, PATHINFO_FILENAME);
+            }
+        }
+
+        return $file_names;
     }
 
     /**

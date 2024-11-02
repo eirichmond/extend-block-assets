@@ -20,7 +20,7 @@ function extend_register_enqueue_assets() {
     );
 
     // Instantiate the class with the block assets array
-   new Extend_Block_Assets( $block_assets );
+    new Extend_Block_Assets();
 
 }
 add_action( 'init', 'extend_register_enqueue_assets' );
