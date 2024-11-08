@@ -3,9 +3,9 @@
 **Donate link:** https://elliottrichmond.co.uk  
 **Tags:** extend, core, styles  
 **Requires at least:** 4.5  
-**Tested up to:** 6.6.2  
+**Tested up to:** 6.7 
 **Requires PHP:** 5.6  
-**Stable tag:** 0.1.0  
+**Stable tag:** 0.1.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -33,3 +33,7 @@ Answers to questions will follow.
 
 ### 1.0 ###
 * Initial setup.
+
+### 1.1 ###
+* addressed issue #1 Better way to get files.
+* corrected typos in readme.
