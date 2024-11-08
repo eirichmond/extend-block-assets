@@ -21,7 +21,7 @@ Register and Enqueue styles for core blocks when they are rendered to the page
 2. Require the class in your theme's function.php file with the following:
 `require_once get_template_directory() . '/extend-block-assets/class-extent-block-assets.php';`
 3. See example-functions.php for usage in your project
-4. Whatever the paths are that you've provided in the included class (see example-functions.php) add the file to those paths, simply use the name of the file that should reflect the name of the block and not preceed with the key 'core' for example, for a core heading CSS of JS file, the file name should be 'heading.css' or 'heading.js' do not use 'core-heading.css' or 'core-heading.js' 
+4. Whatever the paths are that you've provided in the included class (see example-functions.php) add the file to those paths, simply use the name of the file that should reflect the name of the block and not preceed with the key 'core' for example, for a core heading CSS or JS file, the file name should be 'heading.css' or 'heading.js' do not use 'core-heading.css' or 'core-heading.js' 
 
 ## Frequently Asked Questions ##
 
