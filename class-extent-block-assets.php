@@ -170,10 +170,6 @@ class Extend_Block_Assets {
                 true
             );
 
-            add_action('enqueue_block_assets', function() use ($script_handle) {
-                wp_enqueue_script($script_handle);
-            });
-
             add_action('enqueue_block_editor_assets', function() use ($script_handle) {
                 wp_enqueue_script($script_handle);
             });
