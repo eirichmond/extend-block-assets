@@ -170,7 +170,8 @@ class Extend_Block_Assets {
                 true
             );
 
-            add_action('enqueue_block_editor_assets', function() use ($script_handle) {
+            // Ensure scripts are loaded in the backend an the frontend
+            add_action('enqueue_block_assets', function() use ($script_handle) {
                 wp_enqueue_script($script_handle);
             });
 
