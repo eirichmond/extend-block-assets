@@ -170,6 +170,14 @@ class Extend_Block_Assets {
                 true
             );
 
+            add_action('enqueue_block_assets', function() use ($script_handle) {
+                wp_enqueue_script($script_handle);
+            });
+
+            add_action('enqueue_block_editor_assets', function() use ($script_handle) {
+                wp_enqueue_script($script_handle);
+            });
+
             // Add the registered script to the block's metadata as 'viewScript'
             wp_set_script_translations($script_handle, 'text-domain', get_template_directory() . '/languages');
             $this->add_view_script_to_block_metadata('core/' . $block_name, $script_handle);
