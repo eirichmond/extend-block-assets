@@ -189,7 +189,6 @@ class Extend_Block_Assets {
      */
     private function add_view_script_to_block_metadata($block_type, $script_handle) {
         $block_type_object = WP_Block_Type_Registry::get_instance()->get_registered($block_type);
-
         if ($block_type_object) {
             $block_type_object->view_script = $script_handle;
         }
