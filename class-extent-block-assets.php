@@ -162,10 +162,22 @@ class Extend_Block_Assets {
         $script_src = $this->get_asset_path($block_name, 'js');
 
         if ($script_src) {
+
+            $dependencies = array('wp-element', 'wp-dom-ready'); // Common dependencies
+            
+            // Add backend-specific dependencies if in the block editor
+            if (is_admin()) {
+                add_action('current_screen', function($screen) use (&$dependencies) {
+                    if ($screen && $screen->is_block_editor) { // Check if in block editor
+                        $dependencies = array_merge($dependencies, array('wp-edit-post', 'wp-blocks', 'wp-editor'));
+                    }
+                });
+            }
+
             wp_register_script(
                 $script_handle,
                 $script_src,
-                array('wp-blocks', 'wp-element', 'wp-editor'), // Dependencies
+                $dependencies, // Dependencies
                 filemtime(get_template_directory() . $this->js_directory . '/' . $block_name . '.js'),
                 true
             );
